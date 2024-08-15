@@ -1,6 +1,6 @@
 import 'package:ek/core/mangers/toast.dart';
 import 'package:ek/core/network/remote/api_constants.dart';
-import 'package:ek/core/network/remote/store/dio_heeker.dart';
+import 'package:ek/core/network/remote/store/dio_Helper.dart';
 import 'package:ek/core/user_controller/login_cubit/login_states.dart';
 import 'package:ek/user/models/user_model.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   void loginUser({required String email, required String password}) {
     emit(LoadingLogin());
-    DioHeekerStore.postData(url: ApiConstants.loginApi, data: {
+    DioHelperStore.postData(url: ApiConstants.loginApi, data: {
       "email": email,
       "password": password
     }).then((value) {

@@ -21,25 +21,25 @@ class RouteGenerator{
   static Route<dynamic> getRoutes(RouteSettings settings){
     switch(settings.name){
       case Routes.splashRoute:
-        return MateriaekageRoute(builder:(_)=>const SplashScreen());
+        return MaterialPageRoute(builder:(_)=>const SplashScreen());
       case Routes.onBoardingRoute:
-        return MateriaekageRoute(builder:(_)=>const OnBoardingScreen());
+        return MaterialPageRoute(builder:(_)=>const OnBoardingScreen());
       case Routes.loginRoute:
-        return MateriaekageRoute(builder:(_)=> LoginScreen());
+        return MaterialPageRoute(builder:(_)=> LoginScreen());
       case Routes.userHomeRoute:
-        return MateriaekageRoute(builder:(_)=> const UserHomeScreen());
+        return MaterialPageRoute(builder:(_)=> const UserHomeScreen());
       case Routes.adminHomeRoute:
-        return MateriaekageRoute(builder:(_)=> const AdminHomeScreen());
+        return MaterialPageRoute(builder:(_)=> const AdminHomeScreen());
       case Routes.registerRoute:
-        return MateriaekageRoute(builder:(_)=> RegisterScreen());
+        return MaterialPageRoute(builder:(_)=> RegisterScreen());
       case Routes.forgotPasswordRoute:
-        return MateriaekageRoute(builder:(_)=>  ForgetPasswordScreen());
+        return MaterialPageRoute(builder:(_)=>  ForgetPasswordScreen());
       default:
         return unDefinedRoute();
     }
   }
   static Route<dynamic> unDefinedRoute(){
-    return MateriaekageRoute(builder:(_)=>Scaffold(
+    return MaterialPageRoute(builder:(_)=>Scaffold(
       appBar: AppBar(
         title:const Text('NotFound'),
       ),
@@ -53,7 +53,7 @@ void navigateToNextScreen(context, widget) =>
 void navigateAndFinishThisScreen(context, widget) =>
     Navigator.pushAndRemoveUntil(
       context,
-      MateriaekageRoute(builder: (context) => widget),
+      MaterialPageRoute(builder: (context) => widget),
       (Route<dynamic> route) => false,
     );
 void navigateAndReplace(context, widget) =>

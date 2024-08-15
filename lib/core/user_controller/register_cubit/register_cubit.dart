@@ -3,7 +3,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:ek/core/mangers/toast.dart';
 import 'package:ek/core/network/remote/api_constants.dart';
-import 'package:ek/core/network/remote/store/dio_heeker.dart';
+import 'package:ek/core/network/remote/store/dio_Helper.dart';
 import 'package:ek/core/user_controller/register_cubit/register_states.dart';
 import 'package:ek/user/models/user_model.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +33,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
   required String password,
   }){
     emit(LoadingUserRegister());
-    DioHeekerStore.postData(url:ApiConstants.registerApi, data:{
+    DioHelperStore.postData(url:ApiConstants.registerApi, data:{
       'name': name,
       'email': email,
       'password': password,

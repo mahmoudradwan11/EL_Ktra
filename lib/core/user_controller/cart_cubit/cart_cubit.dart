@@ -1,6 +1,6 @@
 import 'package:ek/core/mangers/values.dart';
 import 'package:ek/core/network/remote/api_constants.dart';
-import 'package:ek/core/network/remote/store/dio_heeker.dart';
+import 'package:ek/core/network/remote/store/dio_helper.dart';
 import 'package:ek/core/user_controller/cart_cubit/cart_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ek/user/models/cart_model.dart';
@@ -10,7 +10,7 @@ class CartCubit extends Cubit<CartStates> {
   static CartCubit get(context) => BlocProvider.of(context);
   CartModel? cartModel;
   void getMyCart() {
-    DioHeekerStore.getData(url: ApiConstants.geyMyCartApi, data: {
+    DioHelperStore.getData(url: ApiConstants.geyMyCartApi, data: {
       "nationalId":nationalId,
     }).then((value) {
       cartModel = CartModel.fromJson(value.data);
@@ -22,12 +22,12 @@ class CartCubit extends Cubit<CartStates> {
     });
   }
   TotalCart? totalCart;
-  void getTotaekrice(){
-    DioHeekerStore.getData(url: ApiConstants.getTotaekriceApi, data: {
+  void getTotalPrice(){
+    DioHelperStore.getData(url: ApiConstants.getTotaekriceApi, data: {
       "nationalId": nationalId,
     }).then((value) {
       totalCart = TotalCart.fromJson(value.data);
-      print("Total=${totalCart!.totaekrice!}");
+      print("Total=${totalCart!.totalPrice!}");
       emit(GetTotal());
     }).catchError((error) {
       print(error.toString());
@@ -36,13 +36,13 @@ class CartCubit extends Cubit<CartStates> {
   }
 
   void deleteFromCart(productId) {
-    DioHeekerStore.delData(
+    DioHelperStore.delData(
         url: ApiConstants.deleteCartApi,
         data: {"nationalId": nationalId, "productId": productId}).then((value) {
       print('Deleted');
       emit(DeleteCart());
       getMyCart();
-      getTotaekrice();
+      getTotalPrice();
     }).catchError((error) {
       print(error.toString());
       emit(ErrorDeleteCart());
@@ -50,7 +50,7 @@ class CartCubit extends Cubit<CartStates> {
   }
 
   void addToMyCart(productId) {
-    DioHeekerStore.postData(url: ApiConstants.addToCartApi, data: {
+    DioHelperStore.postData(url: ApiConstants.addToCartApi, data: {
       "nationalId": nationalId,
       "productId": productId,
       "quantity": "1"
@@ -58,7 +58,7 @@ class CartCubit extends Cubit<CartStates> {
       print('Add');
       emit(AddToCart());
       getMyCart();
-      getTotaekrice();
+      getTotalPrice();
     }).catchError((error) {
       print(error.toString());
       emit(ErrorAddToCart());
@@ -66,7 +66,7 @@ class CartCubit extends Cubit<CartStates> {
   }
 
   void updateQuantity(productId, quantity) {
-    DioHeekerStore.putData(url: ApiConstants.updateQuantityApi, data: {
+    DioHelperStore.putData(url: ApiConstants.updateQuantityApi, data: {
       "nationalId": nationalId,
       "productId": productId,
       "quantity": quantity
@@ -74,7 +74,7 @@ class CartCubit extends Cubit<CartStates> {
       print('Update');
       emit(UpdateQuantity());
       getMyCart();
-      getTotaekrice();
+      getTotalPrice();
     }).catchError((error) {
       print(error.toString());
       emit(ErrorUpdateQuantity());

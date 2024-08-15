@@ -490,7 +490,7 @@ class _ProductDetailsState extends State<ProductDetailsAdmin> {
                                 children: [
                                   ListView.separated(
                                       physics:
-                                      const NeverScrollableScrolekhysics(),
+                                      const NeverScrollableScrollPhysics(),
                                       shrinkWrap: true,
                                       itemBuilder: (context, index) =>
                                           buildReviewItem(

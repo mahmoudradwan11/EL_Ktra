@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ek/admin/models/messages_model.dart';
 import 'package:ek/core/mangers/values.dart';
 import 'package:ek/core/network/remote/api_constants.dart';
-import 'package:ek/core/network/remote/store/dio_heeker.dart';
+import 'package:ek/core/network/remote/store/dio_helper.dart';
 import 'package:ek/core/user_controller/chat_cubit/chat_states.dart';
 
 class ChatCubit extends Cubit<ChatStates> {
@@ -10,7 +10,7 @@ class ChatCubit extends Cubit<ChatStates> {
 
   static ChatCubit get(context) => BlocProvider.of(context);
   void sendMessageFromAdminToUser(content,receiverNationalId){
-    DioHeekerStore.postData(url:ApiConstants.chatApi, data:{
+    DioHelperStore.postData(url:ApiConstants.chatApi, data:{
       "senderNationalId":adminId,
       "receiverNationalId":receiverNationalId,
       "content":content
@@ -24,7 +24,7 @@ class ChatCubit extends Cubit<ChatStates> {
   }
   MessagesModel? messagesModel;
   void getMessagesBetweenAdminAndUser(receiverNationalId) {
-    DioHeekerStore.getData(url: ApiConstants.chatApi, data: {
+    DioHelperStore.getData(url: ApiConstants.chatApi, data: {
       "senderNationalId":adminId,
       "receiverNationalId":receiverNationalId
     }).then((value) {
@@ -37,7 +37,7 @@ class ChatCubit extends Cubit<ChatStates> {
     });
   }
   void sendMessageFromUserToAdmin(content){
-    DioHeekerStore.postData(url:ApiConstants.chatApi, data:{
+    DioHelperStore.postData(url:ApiConstants.chatApi, data:{
       "senderNationalId":nationalId,
       "receiverNationalId":adminId,
       "content":content
@@ -50,7 +50,7 @@ class ChatCubit extends Cubit<ChatStates> {
     });
   }
   void getMessagesBetweenUserAndAdmin() {
-    DioHeekerStore.getData(url: ApiConstants.chatApi, data: {
+    DioHelperStore.getData(url: ApiConstants.chatApi, data: {
       "senderNationalId":nationalId,
       "receiverNationalId":adminId
     }).then((value) {

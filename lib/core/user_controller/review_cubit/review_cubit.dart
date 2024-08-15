@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ek/core/mangers/toast.dart';
 import 'package:ek/core/mangers/values.dart';
 import 'package:ek/core/network/remote/api_constants.dart';
-import 'package:ek/core/network/remote/store/dio_heeker.dart';
+import 'package:ek/core/network/remote/store/dio_Helper.dart';
 import 'package:ek/core/user_controller/review_cubit/review_states.dart';
 import 'package:ek/user/models/review_model.dart';
 
@@ -12,7 +12,7 @@ class ReviewCubit extends Cubit<ReviewStates> {
   void addReviewForSpecificationProduct({required productId,
     required review,
     required rate}){
-    DioHeekerStore.postData(url:ApiConstants.addReviewApi, data:{
+    DioHelperStore.postData(url:ApiConstants.addReviewApi, data:{
       "user": nationalId,
       "productId":productId,
       "title":"Good",
@@ -30,7 +30,7 @@ class ReviewCubit extends Cubit<ReviewStates> {
   }
   ReviewModel? reviewModel;
   void getAllReviews(productId) {
-    DioHeekerStore.getData(
+    DioHelperStore.getData(
         url:'${ApiConstants.getAllReviewApi}/$productId')
         .then((value) {
       reviewModel = ReviewModel.fromJson(value.data);
@@ -42,7 +42,7 @@ class ReviewCubit extends Cubit<ReviewStates> {
     });
   }
   void deleteReview(reviewId,productId){
-    DioHeekerStore.delData(url:'${ApiConstants.deleteReviewApi}/$reviewId',).then((value){
+    DioHelperStore.delData(url:'${ApiConstants.deleteReviewApi}/$reviewId',).then((value){
       emit(DeleteReview());
       getAllReviews(productId);
     }).catchError((error){

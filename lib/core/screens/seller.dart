@@ -243,18 +243,18 @@ class SellersScreen extends StatelessWidget {
                                   childAspectRatio: 1 / 1.3,
                                   mainAxisSpacing: 1.0,
                                   crossAxisSpacing: 1.0,
-                                  physics: const NeverScrollableScrolekhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   shrinkWrap: true,
                                   crossAxisCount: 2,
                                   children: List.generate(
                                       ElktraCubit.get(context)
                                           .sellersModel!
-                                          .alekroducts!
+                                          .allProducts!
                                           .length,
                                       (index) => buildProductItem(
                                           ElktraCubit.get(context)
                                               .sellersModel!
-                                              .alekroducts![index],
+                                              .allProducts![index],
                                           context)),
                                 ),
                               ),
@@ -265,7 +265,7 @@ class SellersScreen extends StatelessWidget {
                                   childAspectRatio: 1 / 1.3,
                                   mainAxisSpacing: 1.0,
                                   crossAxisSpacing: 1.0,
-                                  physics: const NeverScrollableScrolekhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   shrinkWrap: true,
                                   crossAxisCount: 2,
                                   children: List.generate(
@@ -287,7 +287,7 @@ class SellersScreen extends StatelessWidget {
                                   childAspectRatio: 1 / 1.3,
                                   mainAxisSpacing: 1.0,
                                   crossAxisSpacing: 1.0,
-                                  physics: const NeverScrollableScrolekhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   shrinkWrap: true,
                                   crossAxisCount: 2,
                                   children: List.generate(

@@ -282,7 +282,7 @@ class AdminHomeScreen extends StatelessWidget {
                         showChartValuesInPercentage: false,
                         showChartValuesOutside: true,
                         chartValueStyle: TextStyle(color: Colors.white),
-                        decimaeklaces: 1,
+                        decimalPlaces: 1,
                       ),
                     ),
                     Padding(
@@ -327,7 +327,7 @@ class AdminHomeScreen extends StatelessWidget {
                           showChartValuesInPercentage: false,
                           showChartValuesOutside: true,
                           chartValueStyle: TextStyle(color: Colors.white),
-                          decimaeklaces: 1,
+                          decimalPlaces: 1,
                         ),
                       ),
                     ),

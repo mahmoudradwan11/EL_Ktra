@@ -1,7 +1,7 @@
 import 'package:ek/core/mangers/toast.dart';
 import 'package:ek/core/mangers/values.dart';
 import 'package:ek/core/network/remote/api_constants.dart';
-import 'package:ek/core/network/remote/store/dio_heeker.dart';
+import 'package:ek/core/network/remote/store/dio_helper.dart';
 import 'package:ek/core/user_controller/favorite_cubit/favorite_states.dart';
 import 'package:ek/core/user_controller/user_version_cubit/user_version_cubit.dart';
 import 'package:ek/user/models/favorite_model.dart';
@@ -14,7 +14,7 @@ class FavoriteCubit extends Cubit<FavoriteStates> {
   FavoriteModel? favoriteModel;
 
   void getMyFavorite() {
-    DioHeekerStore.getData(url: ApiConstants.favoriteApi, data: {
+    DioHelperStore.getData(url: ApiConstants.favoriteApi, data: {
       'nationalId': nationalId,
     }).then((value) {
       favoriteModel = FavoriteModel.fromJson(value.data);
@@ -28,7 +28,7 @@ class FavoriteCubit extends Cubit<FavoriteStates> {
   }
 
   void addToMyFavorite(String? id,context) {
-    DioHeekerStore.postData(
+    DioHelperStore.postData(
         url: ApiConstants.favoriteApi,
         data: {"nationalId": nationalId, "productId": id}).then((value) {
       print('Added');
@@ -43,7 +43,7 @@ class FavoriteCubit extends Cubit<FavoriteStates> {
   }
 
   void deleteFavorite(String? id,context) {
-    DioHeekerStore.delData(url: ApiConstants.favoriteApi, data: {
+    DioHelperStore.delData(url: ApiConstants.favoriteApi, data: {
       "nationalId": nationalId,
       "productId": id,
     }).then((value) {

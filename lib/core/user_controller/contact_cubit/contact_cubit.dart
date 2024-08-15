@@ -8,7 +8,7 @@ import 'package:ek/core/mangers/colors.dart';
 import 'package:ek/core/mangers/toast.dart';
 import 'package:ek/core/mangers/values.dart';
 import 'package:ek/core/network/remote/api_constants.dart';
-import 'package:ek/core/network/remote/store/dio_heeker.dart';
+import 'package:ek/core/network/remote/store/dio_Helper.dart';
 import 'package:ek/core/user_controller/contact_cubit/contact_states.dart';
 import 'package:ek/core/user_controller/user_version_cubit/user_version_cubit.dart';
 import 'package:quickalert/models/quickalert_type.dart';
@@ -36,7 +36,7 @@ class ContactUsCubit extends Cubit<ContactUsState> {
   }
 
   void sendReport(problem, context) {
-    DioHeekerStore.postData(
+    DioHelperStore.postData(
         url: ApiConstants.sendContactApi,
         data: {"nationalId": nationalId, "problem": problem}).then((value) {
       emit(SendContactUs());

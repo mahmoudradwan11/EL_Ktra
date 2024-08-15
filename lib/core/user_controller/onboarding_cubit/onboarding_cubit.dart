@@ -1,5 +1,5 @@
 import 'package:ek/core/mangers/routes.dart';
-import 'package:ek/core/network/local/cache_heeker.dart';
+import 'package:ek/core/network/local/cache_Helper.dart';
 import 'package:ek/core/user_controller/onboarding_cubit/onboarding_states.dart';
 import 'package:ek/user/screens/register.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,7 +25,7 @@ class OnboardingCubit extends Cubit<OnBoardingStates> {
     print(isPageLast);
   }
   void submit(context) {
-    CacheHeeker.saveData(key: 'onBoarding', value: true).then((value) {
+    CacheHelper.saveData(key: 'onBoarding', value: true).then((value) {
       if (value) {
         navigateAndFinishThisScreen(context, RegisterScreen());
       }

@@ -4,14 +4,14 @@ import 'dart:typed_data';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:lp/admin/models/product_model.dart';
-import 'package:lp/core/admin_controller/admin_version_cubit/admin_version_cubit.dart';
-import 'package:lp/core/admin_controller/product_cubit/product_states.dart';
-import 'package:lp/core/mangers/toast.dart';
-import 'package:lp/core/network/remote/api_constants.dart';
-import 'package:lp/core/network/remote/store/dio_helper.dart';
-import 'package:lp/user/models/search_model.dart';
-import 'package:lp/user/screens/search_screen.dart';
+import 'package:ek/admin/models/product_model.dart';
+import 'package:ek/core/admin_controller/admin_version_cubit/admin_version_cubit.dart';
+import 'package:ek/core/admin_controller/product_cubit/product_states.dart';
+import 'package:ek/core/mangers/toast.dart';
+import 'package:ek/core/network/remote/api_constants.dart';
+import 'package:ek/core/network/remote/store/dio_helper.dart';
+import 'package:ek/user/models/search_model.dart';
+import 'package:ek/user/screens/search_screen.dart';
 
 class ProductCubit extends Cubit<ProductStates> {
   ProductCubit() : super(ProductInitStats());

@@ -1,10 +1,10 @@
-import 'package:lp/admin/models/cateogies_model.dart';
-import 'package:lp/admin/models/company_products_model.dart';
-import 'package:lp/core/admin_controller/admin_version_cubit/admin_version_states.dart';
-import 'package:lp/core/mangers/values.dart';
-import 'package:lp/core/network/remote/api_constants.dart';
-import 'package:lp/core/network/remote/store/dio_helper.dart';
-import 'package:lp/user/models/user_model.dart';
+import 'package:ek/admin/models/cateogies_model.dart';
+import 'package:ek/admin/models/company_products_model.dart';
+import 'package:ek/core/admin_controller/admin_version_cubit/admin_version_states.dart';
+import 'package:ek/core/mangers/values.dart';
+import 'package:ek/core/network/remote/api_constants.dart';
+import 'package:ek/core/network/remote/store/dio_helper.dart';
+import 'package:ek/user/models/user_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AdminVersionCubit extends Cubit<AdminVersionStates>{

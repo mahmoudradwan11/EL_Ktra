@@ -1,8 +1,8 @@
 import 'package:ek/core/mangers/images.dart';
 import 'package:ek/core/mangers/values.dart';
-import 'package:ek/core/network/local/cache_heeker.dart';
+import 'package:ek/core/network/local/cache_Helper.dart';
 import 'package:ek/core/network/remote/api_constants.dart';
-import 'package:ek/core/network/remote/store/dio_heeker.dart';
+import 'package:ek/core/network/remote/store/dio_Helper.dart';
 import 'package:ek/core/user_controller/user_version_cubit/user_version_states.dart';
 import 'package:ek/user/models/home/accessories.dart';
 import 'package:ek/user/models/home/laptop.dart';
@@ -29,7 +29,7 @@ class ElktraCubit extends Cubit<ElktraStates> {
       emit(ChangeAppMode());
     } else {
       dark = !dark;
-      CacheHeeker.putBoolData(key: 'mode', value: dark).then((value) {
+      CacheHelper.putBoolData(key: 'mode', value: dark).then((value) {
         emit(ChangeAppMode());
       });
     }
@@ -41,11 +41,11 @@ class ElktraCubit extends Cubit<ElktraStates> {
   HomeSmartWatch? homeSmartWatch;
   HomeAccessories? homeAccessories;
   void getHomeLaptop() {
-    DioHeekerStore.getData(url: ApiConstants.homeLaptopApi, data: {
+    DioHelperStore.getData(url: ApiConstants.homeLaptopApi, data: {
       "nationalId": nationalId,
     }).then((value) {
       homeLaptops = HomeLaptops.fromJson(value.data);
-      print(homeLaptops!.alekroduct!.length);
+      print(homeLaptops!.allProduct!.length);
       print(homeLaptops!.newProduct!.length);
       print(homeLaptops!.usedProduct!.length);
       emit(GetHomeLaptops());
@@ -56,11 +56,11 @@ class ElktraCubit extends Cubit<ElktraStates> {
   }
 
   void getHomeSmartPhone() {
-    DioHeekerStore.getData(url: ApiConstants.homeSmartPhoneApi, data: {
+    DioHelperStore.getData(url: ApiConstants.homeSmartPhoneApi, data: {
       "nationalId": nationalId,
     }).then((value) {
       homeSmartPhone = HomeSmartPhone.fromJson(value.data);
-      print(homeSmartPhone!.alekroduct!.length);
+      print(homeSmartPhone!.allProduct!.length);
       print(homeSmartPhone!.newProduct!.length);
       print(homeSmartPhone!.usedProduct!.length);
       emit(GetHomePhones());
@@ -71,7 +71,7 @@ class ElktraCubit extends Cubit<ElktraStates> {
   }
 
   void getHomeSmartWatches() {
-    DioHeekerStore.getData(url: ApiConstants.homeSmartWatchApi, data: {
+    DioHelperStore.getData(url: ApiConstants.homeSmartWatchApi, data: {
       "nationalId": nationalId,
     }).then((value) {
       homeSmartWatch = HomeSmartWatch.fromJson(value.data);
@@ -84,11 +84,11 @@ class ElktraCubit extends Cubit<ElktraStates> {
   }
 
   void getHomeSmartTvs() {
-    DioHeekerStore.getData(url: ApiConstants.homeSmartTvsApi, data: {
+    DioHelperStore.getData(url: ApiConstants.homeSmartTvsApi, data: {
       "nationalId": nationalId,
     }).then((value) {
       homeTVS = HomeTVS.fromJson(value.data);
-      print(homeTVS!.alekroduct!.length);
+      print(homeTVS!.allProduct!.length);
       print(homeTVS!.newProduct!.length);
       print(homeTVS!.usedProduct!.length);
       emit(GetHomeTvs());
@@ -99,7 +99,7 @@ class ElktraCubit extends Cubit<ElktraStates> {
   }
 
   void getHomeAcc() {
-    DioHeekerStore.getData(url: ApiConstants.homeAccApi, data: {
+    DioHelperStore.getData(url: ApiConstants.homeAccApi, data: {
       "nationalId": nationalId,
     }).then((value) {
       homeAccessories = HomeAccessories.fromJson(value.data);
@@ -123,10 +123,10 @@ class ElktraCubit extends Cubit<ElktraStates> {
   SellersModel? sellersModel;
 
   void getSellerProducts(seller) {
-    DioHeekerStore.getData(url: ApiConstants.sellerApi, data: {"company": seller})
+    DioHelperStore.getData(url: ApiConstants.sellerApi, data: {"company": seller})
         .then((value) {
       sellersModel = SellersModel.fromJson(value.data);
-      print(sellersModel!.alekroducts!.length);
+      print(sellersModel!.allProducts!.length);
       print(sellersModel!.usedProduct!.length);
       print(sellersModel!.newProduct!.length);
       emit(GetAllSellerProducts());
@@ -137,7 +137,7 @@ class ElktraCubit extends Cubit<ElktraStates> {
   }
   TopSellerModel? topSellerModel;
   void getTopSeller(){
-    DioHeekerStore.getData(url:ApiConstants.topSellerApi,data:{
+    DioHelperStore.getData(url:ApiConstants.topSellerApi,data:{
       "limit": 900
     }).then((value){
       topSellerModel = TopSellerModel.fromJson(value.data);

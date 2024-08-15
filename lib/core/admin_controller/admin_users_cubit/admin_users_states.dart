@@ -1,4 +1,4 @@
-import 'package:lp/user/models/user_model.dart';
+import 'package:ek/user/models/user_model.dart';
 
 abstract class AdminUsersStates{}
 class AdminUsersInitState extends AdminUsersStates{}

@@ -67,7 +67,7 @@ class ChatScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: ListView.separated(
-                    physics: const BouncingScrolekhysics(),
+                    physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
                       if (adminId == messages[index].senderNationalId) {
                         return builtMyMessage(messages[index], context);
